@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		623411552D131EB700371255 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623411542D131EB700371255 /* MoviesRepository.swift */; };
+		623411592D131F0B00371255 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623411582D131F0B00371255 /* Movie.swift */; };
+		6234115B2D133D5E00371255 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234115A2D133D5E00371255 /* HomeViewModel.swift */; };
+		6234115D2D133F4100371255 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6234115C2D133F4100371255 /* Config.plist */; };
+		6234115F2D13403900371255 /* PlistConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234115E2D13403900371255 /* PlistConfig.swift */; };
 		628058C22D12267A0036653A /* GloboplayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628058C12D12267A0036653A /* GloboplayApp.swift */; };
 		628058C42D12267A0036653A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628058C32D12267A0036653A /* HomeView.swift */; };
 		628058C62D12267B0036653A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 628058C52D12267B0036653A /* Assets.xcassets */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		623411542D131EB700371255 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
+		623411582D131F0B00371255 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		6234115A2D133D5E00371255 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		6234115C2D133F4100371255 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		6234115E2D13403900371255 /* PlistConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConfig.swift; sourceTree = "<group>"; };
 		628058BE2D12267A0036653A /* Globoplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Globoplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		628058C12D12267A0036653A /* GloboplayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloboplayApp.swift; sourceTree = "<group>"; };
 		628058C32D12267A0036653A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -38,6 +48,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		623411562D131ECD00371255 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				623411582D131F0B00371255 /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		623411572D131ED300371255 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				623411542D131EB700371255 /* MoviesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		628058B52D12267A0036653A = {
 			isa = PBXGroup;
 			children = (
@@ -60,7 +86,7 @@
 				62D90B362D122D5900080A2E /* Assets */,
 				62D90B3E2D12307D00080A2E /* Feature */,
 				62D90B402D12309900080A2E /* Reusable Components */,
-				62D90B3F2D12308A00080A2E /* Service */,
+				62D90B3F2D12308A00080A2E /* DataSource */,
 				62D90B412D1230D700080A2E /* Supporting Files */,
 			);
 			path = Globoplay;
@@ -93,11 +119,13 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
-		62D90B3F2D12308A00080A2E /* Service */ = {
+		62D90B3F2D12308A00080A2E /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				623411572D131ED300371255 /* Repositories */,
+				623411562D131ECD00371255 /* Models */,
 			);
-			path = Service;
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		62D90B402D12309900080A2E /* Reusable Components */ = {
@@ -112,6 +140,8 @@
 			children = (
 				628058C12D12267A0036653A /* GloboplayApp.swift */,
 				62D90B502D124CE700080A2E /* AppCoordinator.swift */,
+				6234115E2D13403900371255 /* PlistConfig.swift */,
+				6234115C2D133F4100371255 /* Config.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -136,6 +166,7 @@
 		62D90B442D1231E900080A2E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6234115A2D133D5E00371255 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -215,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				628058C62D12267B0036653A /* Assets.xcassets in Resources */,
+				6234115D2D133F4100371255 /* Config.plist in Resources */,
 				62D90B3D2D122E1D00080A2E /* splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,11 +258,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623411592D131F0B00371255 /* Movie.swift in Sources */,
 				62D90B4F2D1240BE00080A2E /* MyListView.swift in Sources */,
 				62D90B472D1232EE00080A2E /* HomeTabView.swift in Sources */,
+				6234115B2D133D5E00371255 /* HomeViewModel.swift in Sources */,
 				62D90B512D124CE700080A2E /* AppCoordinator.swift in Sources */,
 				628058C42D12267A0036653A /* HomeView.swift in Sources */,
+				623411552D131EB700371255 /* MoviesRepository.swift in Sources */,
 				628058C22D12267A0036653A /* GloboplayApp.swift in Sources */,
+				6234115F2D13403900371255 /* PlistConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
