@@ -5,17 +5,20 @@
 //  Created by Murilo on 18/12/24.
 //
 
-import Foundation
+import UIKit
 
 class HomeViewModel: ObservableObject {
     @Published var movies: [Movie] = []
+    @Published var movieDetails: MovieDetail? = nil
+    @Published var movieImage: UIImage? = nil
+    @Published var genres: [Genre] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
-    private let repository: MoviesRepositoryProtocol
+    private let moviesService: MoviesService
 
-    init(repository: MoviesRepositoryProtocol = MoviesRepository()) {
-        self.repository = repository
+    init(moviesService: MoviesService = MoviesService(repository: MoviesRepository())) {
+        self.moviesService = moviesService
     }
 
     // MARK: - Public Methods
@@ -23,7 +26,7 @@ class HomeViewModel: ObservableObject {
     @MainActor
     func fetchMovies() async {
         resetState()
-        await loadMovies()
+        await getMovies()
     }
 
     @MainActor
@@ -31,29 +34,59 @@ class HomeViewModel: ObservableObject {
         guard !isLoading else { return }
         isLoading = true
         
-        await loadMovies()
+        await getMovies()
     }
 
     // MARK: - Private Methods
 
     @MainActor
-    private func loadMovies() async {
+    private func getMovies() async {
         do {
-            let response: MoviesResponse
+            let response: [Movie]
             
             if movies.isEmpty {
-                response = try await repository.getMovies()
+                response = try await moviesService.fetchMovies().results
             } else {
-                response = try await repository.loadMoreMovies() ?? MoviesResponse(page: 0, results: [], totalPages: 0, totalResults: 0)
+                response = try await moviesService.loadMoreMovies()?.results ?? []
             }
 
-            movies.append(contentsOf: response.results)
+            movies.append(contentsOf: response)
             isLoading = false
         } catch {
             handleError(error)
         }
     }
 
+    @MainActor
+    func getGenres() async {
+        do {
+            let response = try await moviesService.fetchGenres()
+            self.genres = response
+        } catch {
+            handleError(error)
+        }
+    }
+    
+    @MainActor
+    func getDetail(movieId: Int) async {
+        do {
+            let response = try await moviesService.fetchMovieDetails(movieId: movieId)
+            self.movieDetails = response
+        } catch {
+            handleError(error)
+        }
+    }
+    
+    @MainActor
+    func getMovieImage(path: String) async {
+        do {
+            let response = try await moviesService.fetchImage(path: path)
+            self.movieImage = response
+        } catch {
+            handleError(error)
+        }
+    }
+    
     private func handleError(_ error: Error) {
         self.errorMessage = error.localizedDescription
         isLoading = false
