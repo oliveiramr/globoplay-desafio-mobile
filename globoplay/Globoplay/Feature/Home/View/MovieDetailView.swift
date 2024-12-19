@@ -8,36 +8,133 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    
+    enum Segment: String, CaseIterable {
+        case watchAlso = "Assista também"
+        case details = "Detalhes"
+    }
+    
     let movieId: Int
-    @StateObject private var viewModel = MovieDetailViewModel()
-
+    @ObservedObject var viewModel: MovieDetailViewModel
+    @State private var selectedSegment: Segment = .watchAlso
+    @State private var isAddedToMyList = false
+    @Environment(\.dismiss) var dismiss
+    
+    init(movieId: Int, viewModel: MovieDetailViewModel = MovieDetailViewModel()) {
+        self.movieId = movieId
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
-        VStack {
-            if viewModel.isLoadingImage {
-                ProgressView("Carregando imagem...")
-            } else if let movieImage = viewModel.movieImages {
-                Image(uiImage: movieImage)
-                    .resizable()
-                    .frame(width: 200, height: 300)
-                    .scaledToFill()
-            }
-
-            if let movieDetail = viewModel.movieDetail {
-                Text(movieDetail.name ?? "")
-                    .font(.largeTitle)
-                    .padding()
-                Text(movieDetail.overview ?? "")
-                    .padding()
-            } else {
-                ProgressView("Carregando detalhes...")
-                    .onAppear {
-                        Task {
-                            await viewModel.getDetail(movieId: movieId)
-                            await viewModel.getImages(path: viewModel.movieDetail?.posterPath ?? "")
+        ScrollView {
+            ZStack {
+                backgroundImageView()
+                
+                if viewModel.isLoadingImage || viewModel.isLoadingDetails {
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(Color.white)
+                } else {
+                    VStack {
+                        movieImageView()
+                        movieDetailsView()
+                        HStack {
+                            GPButton(type: .watch) {
+                                print("OK")
+                            }
+                            
+                            GPButton(type: .myList, isAdded: $isAddedToMyList) {
+                                print("OK")
+                            }
                         }
+                        .padding()
                     }
+                    .padding(.top, 100)
+                }
+            }
+            
+            if let movieDetail = viewModel.movieDetail, !viewModel.isLoadingDetails {
+                GPSegmentedControlView(selectedSegment: $selectedSegment, movieDetail: movieDetail)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image("baseline-arrow_back-24px")
+                }
+            }
+        }
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .ignoresSafeArea(edges: .top)
+        .onAppear {
+            loadMovieDetails()
+        }
+        .background(Color.black.edgesIgnoringSafeArea(.all))
+    }
+    
+    @ViewBuilder
+    private func backgroundImageView() -> some View {
+        if let movieImage = viewModel.movieImages,
+           let posterPath = viewModel.movieDetail?.posterPath, !posterPath.isEmpty {
+            Image(uiImage: movieImage)
+                .resizable()
+                .scaledToFill()
+                .blur(radius: 10)
+                .frame(maxWidth: .infinity, maxHeight: 500)
+        } else {
+            Color.globoPlayGray
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+    
+    @ViewBuilder
+    private func movieImageView() -> some View {
+        if let movieImage = viewModel.movieImages,
+           let posterPath = viewModel.movieDetail?.posterPath, !posterPath.isEmpty {
+            Image(uiImage: movieImage)
+                .resizable()
+                .frame(width: 150, height: 200)
+                .shadow(radius: 10)
+                .scaledToFit()
+                .clipped()
+        } else {
+            Image(systemName: "photo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 200)
+                .foregroundColor(.gray)
+        }
+    }
+    
+    @ViewBuilder
+    private func movieDetailsView() -> some View {
+        if let movieDetail = viewModel.movieDetail {
+            VStack(spacing: 10) {
+                Text(movieDetail.name ?? "Título Indisponível")
+                    .font(Font.title2.bold())
+                    .foregroundColor(.white)
+                    .shadow(color: Color.black, radius: 5)
+                
+                Text(movieDetail.overview ?? "Descrição Indisponível")
+                    .foregroundColor(.white)
+                    .shadow(color: Color.black, radius: 5)
+            }
+            .padding()
+        }
+    }
+    
+    private func loadMovieDetails() {
+        Task {
+            viewModel.isLoadingDetails = true
+            await viewModel.getDetail(movieId: movieId)
+            viewModel.isLoadingImage = true
+            await viewModel.getImages(path: viewModel.movieDetail?.posterPath ?? "")
+            viewModel.isLoadingDetails = false
+            viewModel.isLoadingImage = false
+        }
     }
 }

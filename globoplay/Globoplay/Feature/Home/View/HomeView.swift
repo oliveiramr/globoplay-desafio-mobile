@@ -8,17 +8,17 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
-
+    
     init(viewModel: HomeViewModel = HomeViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
                     if let errorMessage = viewModel.errorMessage {
-                        Text("Erro: \(errorMessage)")
+                        Text("Erro ao carregar os filmes: \(errorMessage)")
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
@@ -26,14 +26,17 @@ struct HomeView: View {
                     ScrollView {
                         
                         MovieGridView()
+                            .padding(.top, 30)
                         
                     }
-
+                    .background(Color.globoPlayGray)
+                    
                     if viewModel.isLoading && viewModel.movies.isEmpty {
-                        ProgressView("Carregando...")
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        ProgressView()
+                            .controlSize(.large)
+                            .tint(Color.white)
                     }
-                
+                    
                 }
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -42,19 +45,20 @@ struct HomeView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100, height: 100)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.white)
                         }
                     }
                 }
-
+                .toolbarBackground(Color.black, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .navigationBarTitleDisplayMode(.inline)
+                
                 if viewModel.isLoading && viewModel.movies.isEmpty {
-                    ProgressView("Carregando...")
-                        .frame(maxWidth: .infinity, alignment: .center)
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(Color.white)
                 }
             }
         }
     }
 }
-
-
-

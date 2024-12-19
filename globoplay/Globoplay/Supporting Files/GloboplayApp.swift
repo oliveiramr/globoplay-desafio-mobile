@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct GloboplayApp: App {
+    @State private var isSplashVisible = true
+
     var body: some Scene {
         WindowGroup {
-            AppCoordinator().start()
+            if isSplashVisible {
+                SplashScreen()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            withAnimation {
+                                isSplashVisible = false
+                            }
+                        }
+                    }
+            } else {
+                AppCoordinator().start()
+            }
         }
     }
 }

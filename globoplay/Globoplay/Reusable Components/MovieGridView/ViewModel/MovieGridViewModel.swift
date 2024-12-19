@@ -15,12 +15,14 @@ class MovieGridViewModel: ObservableObject {
     @Published var isAllMoviesLoaded: Bool = false
 
     private let moviesService: MoviesService
+    private let plistConfig: PlistConfig
     private var currentPage: Int = 1
     private var totalPages: Int = 0
     private var allMovies: [Movie] = []
 
-    init(moviesService: MoviesService = MoviesService(repository: MoviesRepository())) {
+    init(moviesService: MoviesService = MoviesService(repository: MoviesRepository()), plistConfig: PlistConfig = PlistConfig(plistName: "Config")) {
         self.moviesService = moviesService
+        self.plistConfig = plistConfig
         Task {
             await fetchGenresAndMovies()
         }
@@ -62,7 +64,6 @@ class MovieGridViewModel: ObservableObject {
         }
 
         if !unclassifiedMovies.isEmpty {
-
             let othersGenreID = -1
             let othersGenreName = "Outros"
             
@@ -73,6 +74,14 @@ class MovieGridViewModel: ObservableObject {
 
             groupedMovies[Genre(id: othersGenreID, name: othersGenreName)] = unclassifiedMovies
         }
+    }
+
+    func getImageUrl(for movie: Movie) -> URL? {
+        let baseUrl = plistConfig.getValue(forKey: "imageBaseURL200") ?? ""
+        if let posterPath = movie.posterPath ?? movie.backdropPath {
+            return URL(string: "\(baseUrl)\(posterPath)")
+        }
+        return nil
     }
 
     private func handleError(_ error: Error) {
