@@ -12,6 +12,7 @@ class MovieDetailViewModel: ObservableObject {
     @Published var movieImages: UIImage?
     @Published var isLoading: Bool = false
     @Published var isLoadingImage: Bool = false
+    @Published var isLoadingDetails: Bool = false
     @Published var errorMessage: String?
 
     private let repository: MoviesRepositoryProtocol

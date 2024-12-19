@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
     func loadMoreMovies() async {
         guard !isLoading else { return }
         isLoading = true
-        
+
         await getMovies()
     }
 
@@ -66,7 +66,7 @@ class HomeViewModel: ObservableObject {
             handleError(error)
         }
     }
-    
+
     @MainActor
     func getDetail(movieId: Int) async {
         do {
@@ -76,7 +76,7 @@ class HomeViewModel: ObservableObject {
             handleError(error)
         }
     }
-    
+
     @MainActor
     func getMovieImage(path: String) async {
         do {
@@ -86,7 +86,7 @@ class HomeViewModel: ObservableObject {
             handleError(error)
         }
     }
-    
+
     private func handleError(_ error: Error) {
         self.errorMessage = error.localizedDescription
         isLoading = false

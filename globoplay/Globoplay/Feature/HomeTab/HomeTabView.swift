@@ -17,23 +17,27 @@ struct HomeTabView: View {
     @State private var selectedTab: Tab = .home
     
     var body: some View {
+        
         TabView(selection: $selectedTab) {
             Spacer()
             HomeView()
                 .tabItem {
                     Label("Início", image: "home")
-                    
                 }
                 .tag(Tab.home)
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.black, for: .tabBar)
             
             MyListView()
                 .tabItem {
-                    Label("Minha Lista", image: "baseline_star_rate_black_24")
-                    
+                    Label("Minha Lista", systemImage: "star.fill")
                 }
                 .tag(Tab.myList)
-            
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.black, for: .tabBar)
             Spacer()
         }
+        .tint(Color.white)
+        .background(Color.globoPlayGray)
     }
 }
