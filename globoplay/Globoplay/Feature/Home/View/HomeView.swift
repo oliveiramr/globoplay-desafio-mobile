@@ -1,3 +1,9 @@
+//
+//  HomeView.swift
+//  Globoplay
+//
+//  Created by Murilo on 18/12/24.
+//
 import SwiftUI
 
 struct HomeView: View {
@@ -10,34 +16,24 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                List {
+                VStack {
                     if let errorMessage = viewModel.errorMessage {
                         Text("Erro: \(errorMessage)")
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity, alignment: .center)
-                    } else {
-                        ForEach(viewModel.movies, id: \.id) { show in
-                            Text(show.name ?? "")
-                                .foregroundStyle(.blue)
-                        }
+                    }
+                    
+                    ScrollView {
+                        
+                        MovieGridView()
+                        
+                    }
 
-                        if viewModel.isLoading && viewModel.movies.isEmpty {
-                            ProgressView("Carregando...")
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        } else if !viewModel.isLoading {
-                            Color.clear
-                                .onAppear {
-                                    Task {
-                                        await viewModel.loadMoreMovies()
-                                    }
-                                }
-                        }
+                    if viewModel.isLoading && viewModel.movies.isEmpty {
+                        ProgressView("Carregando...")
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
-                }
-                .onAppear {
-                    Task {
-                        await viewModel.fetchMovies()
-                    }
+                
                 }
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -59,3 +55,6 @@ struct HomeView: View {
         }
     }
 }
+
+
+
