@@ -17,12 +17,23 @@
 		6234115B2D133D5E00371255 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234115A2D133D5E00371255 /* HomeViewModel.swift */; };
 		6234115D2D133F4100371255 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6234115C2D133F4100371255 /* Config.plist */; };
 		6234115F2D13403900371255 /* PlistConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234115E2D13403900371255 /* PlistConfig.swift */; };
+		623DB3A62D14F51F0073A12F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623411582D131F0B00371255 /* Models.swift */; };
+		623DB3A72D14F52F0073A12F /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623411542D131EB700371255 /* MoviesRepository.swift */; };
+		623DB3A82D14F54B0073A12F /* PlistConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234115E2D13403900371255 /* PlistConfig.swift */; };
+		623DB3AA2D14FD7B0073A12F /* MockMoviesServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DB3A92D14FD7B0073A12F /* MockMoviesServiceRepository.swift */; };
+		623DB3AE2D14FE2B0073A12F /* MockMoviesServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DB3A92D14FD7B0073A12F /* MockMoviesServiceRepository.swift */; };
+		623DB3AF2D14FE6E0073A12F /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62018E592D138F9D00A916E3 /* MoviesService.swift */; };
+		623DB3B02D14FE9F0073A12F /* MoviesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DB3AB2D14FE120073A12F /* MoviesServiceTests.swift */; };
+		623DB3BA2D1506A40073A12F /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DB3B32D1501730073A12F /* HomeViewModelTests.swift */; };
+		623DB3BB2D1506B20073A12F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234115A2D133D5E00371255 /* HomeViewModel.swift */; };
+		623DB3BE2D1509980073A12F /* FavoriteMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DB3BD2D1509980073A12F /* FavoriteMoviesTests.swift */; };
 		628058C22D12267A0036653A /* GloboplayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628058C12D12267A0036653A /* GloboplayApp.swift */; };
 		628058C42D12267A0036653A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628058C32D12267A0036653A /* HomeView.swift */; };
 		628058C62D12267B0036653A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 628058C52D12267B0036653A /* Assets.xcassets */; };
 		62A1954F2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62A1954D2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld */; };
 		62A195512D14C32B008A9A82 /* FavoriteMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A195502D14C32B008A9A82 /* FavoriteMovies.swift */; };
 		62A195552D14CC48008A9A82 /* MyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A195542D14CC48008A9A82 /* MyListViewModel.swift */; };
+		62A195672D14F17F008A9A82 /* MoviesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A195662D14F17F008A9A82 /* MoviesRepositoryTests.swift */; };
 		62A2A1692D1442EE0082389C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2A1682D1442EE0082389C /* ColorExtension.swift */; };
 		62A2A16B2D1479CA0082389C /* GloboplaySplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2A16A2D1479CA0082389C /* GloboplaySplashScreen.swift */; };
 		62A2A16E2D1484B50082389C /* GPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2A16D2D1484B50082389C /* GPButton.swift */; };
@@ -31,6 +42,16 @@
 		62D90B4F2D1240BE00080A2E /* MyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D90B4E2D1240BE00080A2E /* MyListView.swift */; };
 		62D90B512D124CE700080A2E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D90B502D124CE700080A2E /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62A195612D14F16C008A9A82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 628058B62D12267A0036653A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 628058BD2D12267A0036653A;
+			remoteInfo = Globoplay;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		62018E552D137D0700A916E3 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
@@ -43,6 +64,10 @@
 		6234115A2D133D5E00371255 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6234115C2D133F4100371255 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		6234115E2D13403900371255 /* PlistConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConfig.swift; sourceTree = "<group>"; };
+		623DB3A92D14FD7B0073A12F /* MockMoviesServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMoviesServiceRepository.swift; sourceTree = "<group>"; };
+		623DB3AB2D14FE120073A12F /* MoviesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesServiceTests.swift; path = ../MoviesServiceTests.swift; sourceTree = "<group>"; };
+		623DB3B32D1501730073A12F /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		623DB3BD2D1509980073A12F /* FavoriteMoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesTests.swift; sourceTree = "<group>"; };
 		628058BE2D12267A0036653A /* Globoplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Globoplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		628058C12D12267A0036653A /* GloboplayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloboplayApp.swift; sourceTree = "<group>"; };
 		628058C32D12267A0036653A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -50,6 +75,8 @@
 		62A1954E2D14C02B008A9A82 /* FavoriteMovie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteMovie.xcdatamodel; sourceTree = "<group>"; };
 		62A195502D14C32B008A9A82 /* FavoriteMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovies.swift; sourceTree = "<group>"; };
 		62A195542D14CC48008A9A82 /* MyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewModel.swift; sourceTree = "<group>"; };
+		62A1955D2D14F16C008A9A82 /* GloboplayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GloboplayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62A195662D14F17F008A9A82 /* MoviesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesRepositoryTests.swift; path = ../MoviesRepositoryTests.swift; sourceTree = "<group>"; };
 		62A2A1682D1442EE0082389C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		62A2A16A2D1479CA0082389C /* GloboplaySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloboplaySplashScreen.swift; sourceTree = "<group>"; };
 		62A2A16D2D1484B50082389C /* GPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPButton.swift; sourceTree = "<group>"; };
@@ -61,6 +88,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		628058BB2D12267A0036653A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62A1955A2D14F16C008A9A82 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,10 +153,36 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		623DB3B12D15014F0073A12F /* DatasourceTests */ = {
+			isa = PBXGroup;
+			children = (
+				623DB3AB2D14FE120073A12F /* MoviesServiceTests.swift */,
+				62A195662D14F17F008A9A82 /* MoviesRepositoryTests.swift */,
+			);
+			path = DatasourceTests;
+			sourceTree = "<group>";
+		};
+		623DB3B22D1501610073A12F /* ViewModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+				623DB3B32D1501730073A12F /* HomeViewModelTests.swift */,
+			);
+			path = ViewModelsTests;
+			sourceTree = "<group>";
+		};
+		623DB3BC2D1509840073A12F /* PersistenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				623DB3BD2D1509980073A12F /* FavoriteMoviesTests.swift */,
+			);
+			path = PersistenceTests;
+			sourceTree = "<group>";
+		};
 		628058B52D12267A0036653A = {
 			isa = PBXGroup;
 			children = (
 				628058C02D12267A0036653A /* Globoplay */,
+				62A1955E2D14F16C008A9A82 /* GloboplayTests */,
 				628058BF2D12267A0036653A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				628058BE2D12267A0036653A /* Globoplay.app */,
+				62A1955D2D14F16C008A9A82 /* GloboplayTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,8 +206,9 @@
 				62D90B402D12309900080A2E /* Reusable Components */,
 				62D90B412D1230D700080A2E /* Supporting Files */,
 			);
-			path = Globoplay;
-			sourceTree = "<group>";
+			name = Globoplay;
+			path = "/Users/murilo/Developer - Personal/globoplay-desafio-mobile/globoplay/Globoplay";
+			sourceTree = "<absolute>";
 		};
 		62A195522D14CC32008A9A82 /* View */ = {
 			isa = PBXGroup;
@@ -162,6 +224,26 @@
 				62A195542D14CC48008A9A82 /* MyListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		62A1955E2D14F16C008A9A82 /* GloboplayTests */ = {
+			isa = PBXGroup;
+			children = (
+				623DB3BC2D1509840073A12F /* PersistenceTests */,
+				623DB3B22D1501610073A12F /* ViewModelsTests */,
+				623DB3B12D15014F0073A12F /* DatasourceTests */,
+				62A195682D14F228008A9A82 /* Mocks */,
+			);
+			name = GloboplayTests;
+			path = "/Users/murilo/Developer - Personal/globoplay-desafio-mobile/globoplay/GloboplayTests";
+			sourceTree = "<absolute>";
+		};
+		62A195682D14F228008A9A82 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				623DB3A92D14FD7B0073A12F /* MockMoviesServiceRepository.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		62A2A1672D1442DB0082389C /* Extensions */ = {
@@ -312,6 +394,24 @@
 			productReference = 628058BE2D12267A0036653A /* Globoplay.app */;
 			productType = "com.apple.product-type.application";
 		};
+		62A1955C2D14F16C008A9A82 /* GloboplayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62A195632D14F16C008A9A82 /* Build configuration list for PBXNativeTarget "GloboplayTests" */;
+			buildPhases = (
+				62A195592D14F16C008A9A82 /* Sources */,
+				62A1955A2D14F16C008A9A82 /* Frameworks */,
+				62A1955B2D14F16C008A9A82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62A195622D14F16C008A9A82 /* PBXTargetDependency */,
+			);
+			name = GloboplayTests;
+			productName = GloboplayTests;
+			productReference = 62A1955D2D14F16C008A9A82 /* GloboplayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -324,6 +424,10 @@
 				TargetAttributes = {
 					628058BD2D12267A0036653A = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					62A1955C2D14F16C008A9A82 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 628058BD2D12267A0036653A;
 					};
 				};
 			};
@@ -341,6 +445,7 @@
 			projectRoot = "";
 			targets = (
 				628058BD2D12267A0036653A /* Globoplay */,
+				62A1955C2D14F16C008A9A82 /* GloboplayTests */,
 			);
 		};
 /* End PBXProject section */
@@ -352,6 +457,13 @@
 			files = (
 				628058C62D12267B0036653A /* Assets.xcassets in Resources */,
 				6234115D2D133F4100371255 /* Config.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62A1955B2D14F16C008A9A82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +490,7 @@
 				623411552D131EB700371255 /* MoviesRepository.swift in Sources */,
 				62A2A1692D1442EE0082389C /* ColorExtension.swift in Sources */,
 				62A2A16B2D1479CA0082389C /* GloboplaySplashScreen.swift in Sources */,
+				623DB3AE2D14FE2B0073A12F /* MockMoviesServiceRepository.swift in Sources */,
 				62018E582D137D2000A916E3 /* MovieDetailViewModel.swift in Sources */,
 				62018E5D2D139C9800A916E3 /* MovieGridView.swift in Sources */,
 				628058C22D12267A0036653A /* GloboplayApp.swift in Sources */,
@@ -386,7 +499,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		62A195592D14F16C008A9A82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				623DB3A72D14F52F0073A12F /* MoviesRepository.swift in Sources */,
+				623DB3B02D14FE9F0073A12F /* MoviesServiceTests.swift in Sources */,
+				623DB3BE2D1509980073A12F /* FavoriteMoviesTests.swift in Sources */,
+				623DB3A62D14F51F0073A12F /* Models.swift in Sources */,
+				623DB3BB2D1506B20073A12F /* HomeViewModel.swift in Sources */,
+				623DB3A82D14F54B0073A12F /* PlistConfig.swift in Sources */,
+				623DB3BA2D1506A40073A12F /* HomeViewModelTests.swift in Sources */,
+				62A195672D14F17F008A9A82 /* MoviesRepositoryTests.swift in Sources */,
+				623DB3AF2D14FE6E0073A12F /* MoviesService.swift in Sources */,
+				623DB3AA2D14FD7B0073A12F /* MockMoviesServiceRepository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62A195622D14F16C008A9A82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 628058BD2D12267A0036653A /* Globoplay */;
+			targetProxy = 62A195612D14F16C008A9A82 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		628058CA2D12267B0036653A /* Debug */ = {
@@ -566,6 +704,42 @@
 			};
 			name = Release;
 		};
+		62A195642D14F16C008A9A82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LZTUS26MPD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge.GloboplayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Globoplay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Globoplay";
+			};
+			name = Debug;
+		};
+		62A195652D14F16C008A9A82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LZTUS26MPD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge.GloboplayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Globoplay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Globoplay";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,6 +757,15 @@
 			buildConfigurations = (
 				628058CD2D12267B0036653A /* Debug */,
 				628058CE2D12267B0036653A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62A195632D14F16C008A9A82 /* Build configuration list for PBXNativeTarget "GloboplayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62A195642D14F16C008A9A82 /* Debug */,
+				62A195652D14F16C008A9A82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
