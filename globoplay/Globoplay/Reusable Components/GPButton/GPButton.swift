@@ -32,9 +32,8 @@ struct GPButton: View {
     var body: some View {
         Button(action: {
             if type == .myList {
-                isAdded.toggle()
+                action()
             }
-            action()
         }) {
             HStack {
                 buttonContent

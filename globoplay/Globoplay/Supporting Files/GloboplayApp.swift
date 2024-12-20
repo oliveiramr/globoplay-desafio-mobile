@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct GloboplayApp: App {
     @State private var isSplashVisible = true
-
+    
     var body: some Scene {
         WindowGroup {
             if isSplashVisible {
                 SplashScreen()
                     .onAppear {
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             withAnimation {
                                 isSplashVisible = false
@@ -26,5 +28,6 @@ struct GloboplayApp: App {
                 AppCoordinator().start()
             }
         }
+        .modelContainer(for: FavoriteMovies.self)
     }
 }

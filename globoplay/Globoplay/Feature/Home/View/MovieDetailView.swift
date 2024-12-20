@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MovieDetailView: View {
     
     enum Segment: String, CaseIterable {
-        case watchAlso = "Assista também"
         case details = "Detalhes"
+        case watchAlso = "Assista também"
     }
     
     let movieId: Int
     @ObservedObject var viewModel: MovieDetailViewModel
-    @State private var selectedSegment: Segment = .watchAlso
+    @State private var selectedSegment: Segment = .details
     @State private var isAddedToMyList = false
     @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.modelContext) private var context
+    @Query(sort: \FavoriteMovies.id) var favoriteMovies: [FavoriteMovies]
+
     init(movieId: Int, viewModel: MovieDetailViewModel = MovieDetailViewModel()) {
         self.movieId = movieId
         self.viewModel = viewModel
@@ -38,16 +41,8 @@ struct MovieDetailView: View {
                     VStack {
                         movieImageView()
                         movieDetailsView()
-                        HStack {
-                            GPButton(type: .watch) {
-                                print("OK")
-                            }
-                            
-                            GPButton(type: .myList, isAdded: $isAddedToMyList) {
-                                print("OK")
-                            }
-                        }
-                        .padding()
+                        actionButtons()
+                            .padding()
                     }
                     .padding(.top, 100)
                 }
@@ -74,6 +69,30 @@ struct MovieDetailView: View {
             loadMovieDetails()
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
+    }
+    
+    private func actionButtons() -> some View {
+        HStack {
+            GPButton(type: .watch) {
+                print("Assistir filme")
+            }
+            GPButton(type: .myList, isAdded: $isAddedToMyList) {
+                if isAddedToMyList {
+                    if let movieDetail = viewModel.movieDetail {
+                        if let favoriteMovie = favoriteMovies.first(where: { $0.id == movieDetail.id }) {
+                            context.delete(favoriteMovie)
+                        }
+                    }
+                    isAddedToMyList = false
+                } else {
+                    if let movieDetail = viewModel.movieDetail {
+                        let newFav = FavoriteMovies(id: movieDetail.id ?? 0, name: movieDetail.name ?? "", posterPath: movieDetail.posterPath ?? "")
+                        context.insert(newFav)
+                    }
+                    isAddedToMyList = true
+                }
+            }
+        }
     }
     
     @ViewBuilder
@@ -135,6 +154,10 @@ struct MovieDetailView: View {
             await viewModel.getImages(path: viewModel.movieDetail?.posterPath ?? "")
             viewModel.isLoadingDetails = false
             viewModel.isLoadingImage = false
+            
+            if let movieDetail = viewModel.movieDetail {
+                isAddedToMyList = favoriteMovies.contains(where: { $0.id == movieDetail.id })
+            }
         }
     }
 }
