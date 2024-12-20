@@ -20,6 +20,9 @@
 		628058C22D12267A0036653A /* GloboplayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628058C12D12267A0036653A /* GloboplayApp.swift */; };
 		628058C42D12267A0036653A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628058C32D12267A0036653A /* HomeView.swift */; };
 		628058C62D12267B0036653A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 628058C52D12267B0036653A /* Assets.xcassets */; };
+		62A1954F2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62A1954D2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld */; };
+		62A195512D14C32B008A9A82 /* FavoriteMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A195502D14C32B008A9A82 /* FavoriteMovies.swift */; };
+		62A195552D14CC48008A9A82 /* MyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A195542D14CC48008A9A82 /* MyListViewModel.swift */; };
 		62A2A1692D1442EE0082389C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2A1682D1442EE0082389C /* ColorExtension.swift */; };
 		62A2A16B2D1479CA0082389C /* GloboplaySplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2A16A2D1479CA0082389C /* GloboplaySplashScreen.swift */; };
 		62A2A16E2D1484B50082389C /* GPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2A16D2D1484B50082389C /* GPButton.swift */; };
@@ -44,6 +47,9 @@
 		628058C12D12267A0036653A /* GloboplayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloboplayApp.swift; sourceTree = "<group>"; };
 		628058C32D12267A0036653A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		628058C52D12267B0036653A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62A1954E2D14C02B008A9A82 /* FavoriteMovie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteMovie.xcdatamodel; sourceTree = "<group>"; };
+		62A195502D14C32B008A9A82 /* FavoriteMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovies.swift; sourceTree = "<group>"; };
+		62A195542D14CC48008A9A82 /* MyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewModel.swift; sourceTree = "<group>"; };
 		62A2A1682D1442EE0082389C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		62A2A16A2D1479CA0082389C /* GloboplaySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloboplaySplashScreen.swift; sourceTree = "<group>"; };
 		62A2A16D2D1484B50082389C /* GPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPButton.swift; sourceTree = "<group>"; };
@@ -135,10 +141,27 @@
 				62D90B362D122D5900080A2E /* Assets */,
 				62D90B3F2D12308A00080A2E /* DataSource */,
 				62D90B3E2D12307D00080A2E /* Feature */,
+				62E169792D14AFA9009D56AE /* Persistence */,
 				62D90B402D12309900080A2E /* Reusable Components */,
 				62D90B412D1230D700080A2E /* Supporting Files */,
 			);
 			path = Globoplay;
+			sourceTree = "<group>";
+		};
+		62A195522D14CC32008A9A82 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				62D90B4E2D1240BE00080A2E /* MyListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		62A195532D14CC3A008A9A82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				62A195542D14CC48008A9A82 /* MyListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		62A2A1672D1442DB0082389C /* Extensions */ = {
@@ -187,8 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				62018E522D13758A00A916E3 /* Helpers */,
-				623411572D131ED300371255 /* Repositories */,
 				623411562D131ECD00371255 /* Models */,
+				623411572D131ED300371255 /* Repositories */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -196,8 +219,8 @@
 		62D90B402D12309900080A2E /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
-				62A2A16F2D1498500082389C /* GPSegmentedControl */,
 				62A2A16C2D14849E0082389C /* GPButton */,
+				62A2A16F2D1498500082389C /* GPSegmentedControl */,
 				62018E5B2D139C8200A916E3 /* MovieGridView */,
 			);
 			path = "Reusable Components";
@@ -207,10 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				62D90B502D124CE700080A2E /* AppCoordinator.swift */,
-				62A2A16A2D1479CA0082389C /* GloboplaySplashScreen.swift */,
 				6234115C2D133F4100371255 /* Config.plist */,
 				62A2A1672D1442DB0082389C /* Extensions */,
 				628058C12D12267A0036653A /* GloboplayApp.swift */,
+				62A2A16A2D1479CA0082389C /* GloboplaySplashScreen.swift */,
 				6234115E2D13403900371255 /* PlistConfig.swift */,
 			);
 			path = "Supporting Files";
@@ -254,9 +277,19 @@
 		62D90B4D2D1240A000080A2E /* MyList */ = {
 			isa = PBXGroup;
 			children = (
-				62D90B4E2D1240BE00080A2E /* MyListView.swift */,
+				62A195522D14CC32008A9A82 /* View */,
+				62A195532D14CC3A008A9A82 /* ViewModel */,
 			);
 			path = MyList;
+			sourceTree = "<group>";
+		};
+		62E169792D14AFA9009D56AE /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				62A1954D2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld */,
+				62A195502D14C32B008A9A82 /* FavoriteMovies.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,13 +362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A1954F2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld in Sources */,
 				62A2A16E2D1484B50082389C /* GPButton.swift in Sources */,
+				62A195512D14C32B008A9A82 /* FavoriteMovies.swift in Sources */,
 				623411592D131F0B00371255 /* Models.swift in Sources */,
 				62018E612D139CBA00A916E3 /* MovieGridViewModel.swift in Sources */,
 				62D90B4F2D1240BE00080A2E /* MyListView.swift in Sources */,
 				62018E5A2D138F9D00A916E3 /* MoviesService.swift in Sources */,
 				62D90B472D1232EE00080A2E /* HomeTabView.swift in Sources */,
 				6234115B2D133D5E00371255 /* HomeViewModel.swift in Sources */,
+				62A195552D14CC48008A9A82 /* MyListViewModel.swift in Sources */,
 				62D90B512D124CE700080A2E /* AppCoordinator.swift in Sources */,
 				62A2A1712D14986B0082389C /* GPSegmentedControlView.swift in Sources */,
 				628058C42D12267A0036653A /* HomeView.swift in Sources */,
@@ -552,6 +588,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62A1954D2D14C02B008A9A82 /* FavoriteMovies.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62A1954E2D14C02B008A9A82 /* FavoriteMovie.xcdatamodel */,
+			);
+			currentVersion = 62A1954E2D14C02B008A9A82 /* FavoriteMovie.xcdatamodel */;
+			path = FavoriteMovies.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 628058B62D12267A0036653A /* Project object */;
 }
